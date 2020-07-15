@@ -5,7 +5,7 @@ import torch.nn as nn
 import functools
 from torch.autograd import Variable
 import numpy as np
-from layer_util import *
+from .layer_util import *
 
 ###############################################################################
 # Functions

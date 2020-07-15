@@ -1,4 +1,4 @@
-"""Factory for box-conditioned mask context auto-encoder."""
+ """Factory for box-conditioned mask context auto-encoder."""
 
 import torch
 import torch.nn as nn
@@ -6,8 +6,8 @@ import torch.nn.parallel
 import functools
 from torch.autograd import Variable
 import numpy as np
-from layer_util import *
-from MaskContextAE_NET import MaskContextAE_NET
+from .layer_util import *
+from .MaskContextAE_NET import MaskContextAE_NET
 
 
 class MaskTwoStreamConv_NET(MaskContextAE_NET):

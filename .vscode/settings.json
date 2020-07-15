@@ -1,0 +1,9 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": false,
+    "python.formatting.provider": "autopep8",
+    "editor.detectIndentation": false,
+    "python.pythonPath": "/private/home/ajakash/.conda/envs/18him/bin/python",
+    "editor.fontSize": 14
+}

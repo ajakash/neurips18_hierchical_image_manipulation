@@ -6,8 +6,8 @@ import torch.nn.parallel
 import functools
 from torch.autograd import Variable
 import numpy as np
-from layer_util import *
-from MaskContextAE_NET import MaskContextAE_NET
+from .layer_util import *
+from .MaskContextAE_NET import MaskContextAE_NET
 
 
 class MaskTwoStreamConvSwitch_NET(MaskContextAE_NET):
@@ -138,7 +138,8 @@ class MaskTwoStreamConvSwitch_NET(MaskContextAE_NET):
             if i < self.num_layers:
                 output_dim = self.dim_list[self.num_layers-i-1]
             else:
-                output_dim = input_dim/2
+                # output_dim = input_dim/2
+                output_dim = int(input_dim/2)
             if not(skip_layers is None):
                 if i in skip_layers: input_dim *= 2
             if self.use_simpleRes:

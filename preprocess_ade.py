@@ -11,7 +11,8 @@ from shutil import copyfile
 
 def loadAde20K(file):
     segfile = file.replace('.jpg', '_seg.png')
-    seg = scipy.misc.imread(segfile)
+    # seg = scipy.misc.imread(segfile)
+    seg = imageio.imread(segfile)
     
     R, G, B = seg[:,:,0], seg[:,:,1], seg[:,:,2]
 
@@ -73,7 +74,9 @@ if __name__ == '__main__':
         if not os.path.exists(os.path.join(save_dir, dir_name)):
             os.makedirs(os.path.join(save_dir, dir_name))
 
-    index = scipy.io.loadmat(os.path.join(save_dir, 'index_ade20k.mat'))
+    source_dir = "/datasets01/ADE20K/050718/ADE20K_2016_07_26"
+    #index = scipy.io.loadmat(os.path.join(save_dir, 'index_ade20k.mat'))
+    index = scipy.io.loadmat(os.path.join(source_dir, 'index_ade20k.mat'))
     filenames = index['index'][0,0][0][0]
     folders = index['index'][0,0][1][0]
     obj_names = index['index'][0,0][6][0]
@@ -100,7 +103,8 @@ if __name__ == '__main__':
     for i, id_ in enumerate(ids):
         folder = os.path.join(*folders[id_][0].split('/')[1:])
         filename = os.path.join(folder, filenames[id_][0])
-        filename = os.path.join(save_dir, filename)
+        # filename = os.path.join(save_dir, filename)
+        filename = os.path.join(source_dir, filename)
         Om, Oi, objects = loadAde20K(filename)
         
         r, c = Oi.shape

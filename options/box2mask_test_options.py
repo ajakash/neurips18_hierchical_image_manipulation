@@ -1,6 +1,6 @@
 """Testing configurations for mask generation."""
 
-from box2mask_base_options import BoxToMaskOptions
+from .box2mask_base_options import BoxToMaskOptions
 
 class BoxToMaskTestOptions(BoxToMaskOptions):
     def initialize(self):

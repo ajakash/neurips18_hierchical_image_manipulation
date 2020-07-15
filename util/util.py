@@ -10,7 +10,8 @@ import re
 try:
     from StringIO import StringIO
 except:
-    from cStringIO import StringIO
+    # from cStringIO import StringIO
+    from io import StringIO
 import shutil
 import numpy as np
 

@@ -6,10 +6,10 @@ import torch.nn as nn
 import os
 from torch.autograd import Variable
 from util.image_pool import ImagePool
-from base_model import BaseModel
-from Discriminator_NET import NLayerDiscriminator, NLayerResDiscriminator, MultiscaleDiscriminator, lr_control 
-from mask_losses import MaskReconLoss
-from losses import compute_gan_loss, GANLoss
+from .base_model import BaseModel
+from .Discriminator_NET import NLayerDiscriminator, NLayerResDiscriminator, MultiscaleDiscriminator, lr_control 
+from .mask_losses import MaskReconLoss
+from .losses import compute_gan_loss, GANLoss
 
 class TwoStreamAE_mask(BaseModel):
     def __init__(self, opt):
@@ -27,9 +27,9 @@ class TwoStreamAE_mask(BaseModel):
         self.opt = opt
         
         if opt.no_comb:
-            from MaskTwoStreamConvSwitch_NET import MaskTwoStreamConvSwitch_NET as model_factory
+            from .MaskTwoStreamConvSwitch_NET import MaskTwoStreamConvSwitch_NET as model_factory
         else:
-            from MaskTwoStreamConv_NET import MaskTwoStreamConv_NET as model_factory
+            from .MaskTwoStreamConv_NET import MaskTwoStreamConv_NET as model_factory
 
         model = self.get_model(model_factory)
         self.netG = model(opt)
@@ -137,6 +137,7 @@ class TwoStreamAE_mask(BaseModel):
             oneHot_ctx_in = oneHot_ctx_in.scatter_(1, mask_ctx_in.data.long().cuda(), 1.0)
             
             oneHot_cls = torch.cuda.FloatTensor(size[0], self.opt.label_nc)
+            import ipdb; ipdb.set_trace()
             oneHot_cls = oneHot_cls.scatter_(1, cls.data.long().cuda(), 1.0) 
             
             oneHot_obj_mask_in = torch.cuda.FloatTensor(torch.Size(oneHot_size)).zero_()
@@ -252,7 +253,6 @@ class TwoStreamAE_mask(BaseModel):
                     [comb_recon_label, obj_recon_label]
         else:
             return recon_label
-
 
     def reconstruct(self, input_dict, eval_mode=False):
         label_map = input_dict['label_map']
