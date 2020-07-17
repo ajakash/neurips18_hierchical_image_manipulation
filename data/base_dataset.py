@@ -176,8 +176,9 @@ def sample_fg_from_full(inst_info, class_of_interest, min_box_size):
         candidate_list.append({
             'bbox': [xmin,ymin,xmax,ymax], 'cls': cls, 'inst_id': int(inst_idx)})
     if len(candidate_list) > 0:
-        rnd_bbox_idx = np.random.randint(len(candidate_list))
-        bbox_selected = candidate_list[rnd_bbox_idx]
+        # rnd_bbox_idx = np.random.randint(len(candidate_list))
+        # bbox_selected = candidate_list[rnd_bbox_idx]
+        bbox_selected = candidate_list[0]
         return bbox_selected
     else:
         return None

@@ -1,7 +1,7 @@
 python vis_mask2image.py \
 --dataroot datasets/cityscape/ \
 --dataloader cityscape \
---name pretrained_mask2image_city \
+--name city_image \
 --model pix2pixHD_condImg \
 --no_instance \
 --resize_or_crop select_region \
@@ -22,5 +22,6 @@ python vis_mask2image.py \
 --use_skip \
 --use_output_gate \
 --phase val \
---how_many 200 \
+--how_many 10 \
 --gpu_ids 0 \
+--random_crop 0 \

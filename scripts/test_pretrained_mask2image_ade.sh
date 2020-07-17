@@ -1,14 +1,14 @@
 python vis_mask2image.py \
 --dataroot=datasets/ade20k/ \
 --dataloader ade20k \
---name pretrained_mask2image_ade \
+--name ade_image \
 --model pix2pixHD_condImg \
 --no_instance \
 --resize_or_crop select_region \
 --loadSize 512 \
 --fineSize 256 \
 --contextMargin 3.0 \
---prob_bg 0.1 \
+--prob_bg 0 \
 --label_nc 49 \
 --output_nc 3 \
 --load_image \
@@ -21,7 +21,8 @@ python vis_mask2image.py \
 --which_encoder ctx_label \
 --use_skip \
 --use_output_gate \
---how_many 200 \
+--how_many 10 \
 --phase val \
 --gpu_ids 0 \
+--random_crop 0 \
 

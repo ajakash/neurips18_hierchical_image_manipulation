@@ -137,7 +137,10 @@ class TwoStreamAE_mask(BaseModel):
             oneHot_ctx_in = oneHot_ctx_in.scatter_(1, mask_ctx_in.data.long().cuda(), 1.0)
             
             oneHot_cls = torch.cuda.FloatTensor(size[0], self.opt.label_nc)
-            import ipdb; ipdb.set_trace()
+            # import ipdb; ipdb.set_trace()
+            # oneHot_cls = oneHot_cls.scatter_(1, cls.data.long().cuda(), 1.0) 
+            if cls.size() == torch.Size([1]):
+                cls.unsqueeze_(1)
             oneHot_cls = oneHot_cls.scatter_(1, cls.data.long().cuda(), 1.0) 
             
             oneHot_obj_mask_in = torch.cuda.FloatTensor(torch.Size(oneHot_size)).zero_()

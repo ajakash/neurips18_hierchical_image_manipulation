@@ -33,6 +33,19 @@ for i, data in enumerate(dataset):
     if i >= opt.how_many:
         break
 
+    # input_visuals = OrderedDict([
+    #     ('image', util.tensor2im(data['image'][0])),
+    #     ('gt_label', util.tensor2label(data['label'][0], opt.label_nc)),
+    #     ('input_context', util.tensor2label(data['mask_context_in'][0], opt.label_nc)),
+    #     ('mask_in', util.tensor2im(data['mask_in'][0])),
+    # ])
+
+    # label_path = data['label_path']
+    # print('process image... %s' % label_path)
+    # visualizer.save_images(webpage, input_visuals, label_path)
+
+    # continue
+
     reconstructed = model.reconstruct({
         'label_map': Variable(data['label'], volatile=True),
         'mask_obj_in': Variable(data['mask_object_in'], volatile=True),

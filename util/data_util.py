@@ -105,7 +105,7 @@ def paste_canvas(original, cropped, info_dict, method=Image.NEAREST,
         x1 = max(0,x1); y1 = max(0,y1) # make sure in range
         x2 = min(2047,x2); y2 = min(1023,y2)
         width = x2 - x1 + 1; height = y2 - y1 + 1
-
+        
         x3, y3, x4, y4 = info_dict['output_bbox'].int() # coordinates of crop window
         x3 = max(0,x3); y3 = max(0,y3) # make sure in range
 
@@ -116,6 +116,20 @@ def paste_canvas(original, cropped, info_dict, method=Image.NEAREST,
 
     raw = original.clone()
     raw[0,:,y1:y2+1,x1:x2+1] = recon[:,:,:]
+    # h = raw[0,:,y1:y2+1,x1:x2+1].size()[1]
+    # w = raw[0,:,y1:y2+1,x1:x2+1].size()[2]
+    # if is_img:
+    #     if h < height and w < width:
+    #         raw[0,:,y1:y2+1,x1:x2+1] = recon[:,:height-1,:width-1]
+    #     elif h < height:
+    #         raw[0,:,y1:y2+1,x1:x2+1] = recon[:,:height-1,:]
+    #     elif w < width: 
+    #         raw[0,:,y1:y2+1,x1:x2+1] = recon[:,:,:widht-1]
+    #     else:
+    #         raw[0,:,y1:y2+1,x1:x2+1] = recon[:,:,:]
+    # else:
+    #     raw[0,:,y1:y2+1,x1:x2+1] = recon[:,:,:]
+
 
     return raw
 

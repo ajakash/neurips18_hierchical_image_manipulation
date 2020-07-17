@@ -1,8 +1,8 @@
 python vis_box2mask.py \
 --dataroot datasets/ade20k/ \
 --dataloader ade20k \
---name pretrained_box2mask_ade \
---prob_bg 0.05 \
+--name ade_mask \
+--prob_bg 0 \
 --label_nc 49 \
 --output_nc 49 \
 --model AE_maskgen_twostream \
@@ -26,6 +26,7 @@ python vis_box2mask.py \
 --max_box_size 256 \
 --add_dilated_layers \
 --phase val \
---how_many 200 \
+--how_many 10 \
 --results_dir checkpoints/ \
 --gpu_ids 0 \
+--random_crop 0 \

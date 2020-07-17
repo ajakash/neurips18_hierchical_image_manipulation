@@ -29,6 +29,17 @@ for i, data in enumerate(dataset):
     if i >= opt.how_many:
         break
 
+    # input_visuals = OrderedDict([
+    #         ('input_label', util.tensor2label(data['label'][0], opt.label_nc)),
+    #         ('input_image', util.tensor2im(data['image'][0])),
+    #         ('mask_in', util.tensor2im(data['mask_in'][0])),
+    #         ('inst', util.tensor2im(data['inst'][0])),
+    #         ('mask_out', util.tensor2im(data['mask_out'][0]))
+    # ])
+    # print('process image... %s' % ('%05d'% i))
+    # visualizer.save_images(webpage, input_visuals, ['%05d' % i])
+    # continue 
+
     generated = model.inference(
             label=Variable(data['label']),
             inst=Variable(data['inst']),
@@ -36,6 +47,7 @@ for i, data in enumerate(dataset):
             mask_in=Variable(data['mask_in']),
             mask_out=Variable(data['mask_out'])
             ) 
+
 
     visuals = model.get_current_visuals()
 

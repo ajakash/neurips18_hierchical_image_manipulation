@@ -1,8 +1,8 @@
 python vis_box2mask.py \
 --dataroot datasets/cityscape/ \
 --dataloader cityscape \
---name pretrained_box2mask_city \
---prob_bg 0.1 \
+--name city_mask \
+--prob_bg 0 \
 --label_nc 35 \
 --output_nc 35 \
 --model AE_maskgen_twostream \
@@ -25,6 +25,7 @@ python vis_box2mask.py \
 --min_box_size 128 \
 --max_box_size 256 \
 --phase val \
---how_many 200 \
+--how_many 10 \
 --gpu_ids 0 \
+--random_crop 0 \
 

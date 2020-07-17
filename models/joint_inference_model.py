@@ -45,10 +45,12 @@ class JointInference():
             candidate_list.append(bbox)
         if not random and len(candidate_list) > 0:
             # Sample from bbox within size limit
-            return np.random.choice(candidate_list)
+            #return np.random.choice(candidate_list)
+            return candidate_list[0]
         else:
             # Random sample
-            return np.random.choice(bbox_originals)
+            #return np.random.choice(bbox_originals)
+            return list(bbox_originals)[0]
 
     def sample_window(self, img, label, bbox_sampled):
         pass
